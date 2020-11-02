@@ -1,0 +1,20 @@
+version: '2.0'
+services:
+   ui:
+     image: idobry/chartmuseumui:latest
+     environment:
+      CHART_MUSESUM_URL: "http://chartmuseum:8080"
+     ports:
+         - 80:8080
+   chartmuseum:
+     image: docker.io/bitnami/chartmuseum:0-debian-10
+     ports:
+         - '8080:8080'
+     volumes:
+         - chartmuseum_data:/bitnami/data
+
+volumes:
+  chartmuseum_data:
+    driver: local
+
+
